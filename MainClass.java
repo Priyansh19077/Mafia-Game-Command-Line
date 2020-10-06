@@ -11,12 +11,12 @@ public class MainClass {
             System.out.print("Enter Number of Players: ");
             try {
                 number_of_players=sc.nextInt();
-                if(number_of_players>=6 && number_of_players<=200000000)
+                if(number_of_players>=6 && number_of_players<=20000)
                     counter=false;
                 else
-                    System.out.println("Number of players must be >= 6 and <=200000000");
+                    System.out.println("Number of players must be >= 6 and <=20000 !!!");
             }catch (InputMismatchException e) {
-                System.out.println("Number of players can only be an Integer");
+                System.out.println("Number of players can only be an Integer!!!");
                 sc.nextLine();
                 counter=true;
             }
@@ -34,20 +34,21 @@ public class MainClass {
                 if(choice>=1 && choice<=5)
                     counter=false;
                 else
-                    System.out.println("Please choose a number >=1 and <=5");
+                    System.out.println("Please choose a number >=1 and <=5 !!!");
             }catch (InputMismatchException e) {
-                System.out.println("Your choice can only be an Integer");
+                System.out.println("Your choice can only be an Integer!!!");
                 sc.nextLine();
                 counter=true;
             }
         }
-        Game game=new Game(number_of_players,choice);
-        int count=5;
+        GameClass game=new GameClass(number_of_players,choice);
+        int round=1;
         while(!game.isGame_has_ended()){
+            System.out.println("Round "+round+": ");
             game.play_round();
-            count--;
-            if(count==0)
-                break;
+            System.out.println("--End of Round "+round+"--");
+            round++;
         }
+        System.out.println("Game Over!!!");
     }
 }
